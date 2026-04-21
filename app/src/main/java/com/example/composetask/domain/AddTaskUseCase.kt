@@ -1,4 +1,12 @@
 package com.example.composetask.domain
 
-class AddTaskUseCase {
+import javax.inject.Inject
+
+class AddTaskUseCase @Inject constructor(
+    private val repository: TaskRepository
+) {
+
+    suspend operator fun invoke(){
+        return repository.sync()
+    }
 }
